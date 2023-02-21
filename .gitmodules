@@ -1,0 +1,3 @@
+[submodule "src/fizzbuzz"]
+	path = src/fizzbuzz
+	url = https://github.com/540/php8-testing-boilerplate.git
