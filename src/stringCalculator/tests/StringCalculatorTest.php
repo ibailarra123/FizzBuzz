@@ -24,4 +24,17 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals(    0, $convertedString);
     }
+
+    /**
+     * @test
+     */
+
+    public function returns_1_for_1()
+    {
+        $stringCalculator = new StringCalculator();
+
+        $convertedString = $stringCalculator->add('1');
+
+        $this->assertEquals(    1, $convertedString);
+    }
 }
