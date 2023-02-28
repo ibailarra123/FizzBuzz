@@ -4,16 +4,22 @@ namespace Deg540\StringCalculatorPHP;
 
 class StringCalculator
 {
-    public function add(String $numbers): int
+    function add(string $string): int|null
     {
-        if(strlen($numbers )== 1){
-            echo int($numbers);
-            return int($numbers);
+        $delimiters = [';', "\n", '//', ',', '*', '[', ']'];
+        $newStr = str_replace($delimiters, $delimiters[0], $string);
+        $lista = explode($delimiters[0], $newStr);
+        $suma = 0;
+        for ($i = 0; $i < sizeof($lista); $i++) {
+            if ((int)($lista[$i]) < 0) {
+                return null;
+                throw new Exception("negativos no soportados".$lista);
+
+            } elseif ((int)($lista[$i]) > 1000) {
+                $suma = $suma - (int)($lista[$i]);
+            }
+            $suma = $suma + (int)($lista[$i]);
         }
-        elseif (strlen($numbers)==2){
-            $splitedNumbers = explode(",",$numbers);
-            return (int($splitedNumbers[0]) + int($splitedNumbers[1]));
-        }
-        return 0;
+        return $suma;
     }
 }
